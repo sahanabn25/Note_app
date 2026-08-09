@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #ffffff;
+}
+.notePreview {
+  padding: 15px;
+  background-color: #ffd043;
+  margin-top: 3px;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 10px;
+  word-break: break-word;
+  border: 1px solid #ccc;
+  box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Note Editor</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <section id="editorPage">
+    <form action="<%= note ? '/note/' + note._id : '/note' %>" method="POST">
+      <div class="toolbar">
+        <button type="button" id="boldBtn"><b>B</b></button>
+        <button type="button" id="underlineBtn"><u>U</u></button>
+        <select id="fontSizeSelector">
+          <option value="1">Small</option>
+          <option value="3" selected>Normal</option>
+          <option value="5">Large</option>
+          <option value="7">Huge</option>
+        </select>
+        <input type="color" id="colorPicker" name="bgColor" value="<%= note ? note.bgColor : '#f3c641' %>" />
+        <button type="button" id="tableBtn">📊 Table</button>
+        <button type="button" id="checklistBtn">☑️ Checklist</button>
+        <button type="button" id="bulletBtn">• Bullets</button>
+        <button type="button" id="numberBtn">1. Numbering</button>
+        <button type="button" id="imageBtn">🖼️ Image</button>
+        <% if (note) { %>
+          <button formaction="/note/<%= note._id %>/delete" formmethod="POST">🗑️ Delete</button>
+        <% } %>
+        <a href="/"><button type="button">⬅ Back</button></a><br><br>
+      </div>
+      <div id="noteEditor" contenteditable="true" style="background-color: <%= note ? note.bgColor : '#f3c641' %>">
+        <%- note ? note.content : '' %>
+      </div>
+      <input type="hidden" name="content" id="hiddenContent">
+      <button type="submit" style="margin-top: 10px;">💾 Save Note</button>
+    </form>
+  </section>
+  <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes App</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <section id="mainPage">
+    <a href="/new"><button id="addNoteBtn">+ Add Note</button></a>
+    <div id="notesContainer">
+      <% notes.forEach(note => { %>
+        <a href="/note/<%= note._id %>">
+          <div class="notePreview" style="background:<%= note.bgColor %>">
+            <%= note.content.replace(/<[^>]*>?/gm, ' ').slice(0, 15) %>
+          </div>
+        </a>
+      <% }) %>
+    </div>
+  </section>
+  <script src="/script.js"></script>
+</body>
+</html>
